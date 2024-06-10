@@ -20,13 +20,8 @@ const businessProviderRoute = require('./routes/businessProviderRoute.js');
 const insuranceRoute = require('./routes/insuranceRoute.js');
 const adminUserRoute = require('./routes/adminUserRoute.js');
 
-// Middleware setup
-const corsOptions = {
-  origin: 'http://ec2-51-20-142-15.eu-north-1.compute.amazonaws.com:3000',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: '16kb' }));
