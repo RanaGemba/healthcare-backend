@@ -18,7 +18,7 @@ const adminUserSchema = new Schema(
     email: {
       type: String,
       required: true,
-      lowercase: true
+      lowercase: true,
     },
     contact: {
       type: Number,
@@ -26,23 +26,23 @@ const adminUserSchema = new Schema(
     },
     address: {
       type: String,
-      required: true
+      required: false
     },
     pincode: {
       type: Number,
-      required: true
+      required: false
     },
     city: {
       type: String,
-      required: true
+      required: false
     },
     state: {
       type: String,
-      required: true
+      required: false
     },
     country: {
       type: String,
-      required: true
+      required: false
     },
     status: {
       type: String,
