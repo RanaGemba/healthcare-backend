@@ -1,26 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
-const attachmentSchema = new Schema({
-  fileName: {
-    type: String,
-    required: true
-  },
-  filePath: {
-    type: String,
-    required: true
-  },
-  fileType: {
-    type: String,
-    required: true
-  },
-  fileSize: {
-    type: Number,
-    required: true
-  }
-}, { _id: false });
-
 const patientSchema = new Schema({
+  code:{
+    type:String,
+    required: false
+  },
   todaysDate: {
     type: Date,
     required: false
@@ -67,7 +52,7 @@ const patientSchema = new Schema({
   },
   sex: {
     type: String,
-    enum: ['male', 'female'],
+    enum: ['male', 'female', 'others'],
     required: false
   },
   maritalStatus: {

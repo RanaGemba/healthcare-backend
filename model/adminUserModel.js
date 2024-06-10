@@ -6,6 +6,10 @@ const jwt = require('jsonwebtoken');
 
 const adminUserSchema = new Schema(
   {
+    code:{
+      type: String,
+      required:false,
+    },
     name: {
       type: String,
       required: true,

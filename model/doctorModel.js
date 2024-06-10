@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const doctorSchema = new Schema({
-  name: {
+  code:{
+    type:String,
+    required: false
+  },
+   name: {
     type: String,
     required: true
   },

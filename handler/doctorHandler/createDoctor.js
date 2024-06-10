@@ -1,4 +1,6 @@
 const DoctorModel = require('../../model/doctorModel');
+const { generateDoctorCode } = require('../../middlewares/utils/generateCode');
+
 
 exports.createDoctor = async (req, res) => {
   try {
@@ -10,6 +12,10 @@ exports.createDoctor = async (req, res) => {
     console.log(req.body);
     console.log(doctorData, "testing...2");
 
+
+    const code = await generateDoctorCode();
+    doctorData.code = code
+    console.log(doctorData);
     // Add clinic to doctorData
     doctorData.clinic = clinic;
 

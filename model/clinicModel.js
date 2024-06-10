@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const clinicSchema = new Schema({
+  code:{
+    type:String,
+    required: false
+  },
   name: {
     type: String,
     required: false
