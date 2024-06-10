@@ -86,6 +86,11 @@ const patientSchema = new Schema({
     type: String,
     required: false
   },
+  secondaryInsurancePlanName: {
+    type: String,
+    required: false
+  },
+  
   primaryInsuranceInsuredName: {
     type: String,
     required: false
@@ -114,7 +119,16 @@ const patientSchema = new Schema({
     enum: ['Approved', 'Pending', 'Rejected'],
     required: false
   },
-  
+
+  ssn: {
+    type: String,
+    required: false
+  },
+  zipcode: {
+    type: String,
+    required: false
+  },
+
 });
 
 
