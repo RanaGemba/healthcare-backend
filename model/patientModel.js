@@ -113,6 +113,10 @@ const patientSchema = new Schema({
     type: String,
     required: false
   },
+  clientName:{
+    type:String,
+    required:false
+  }
 
 });
 
