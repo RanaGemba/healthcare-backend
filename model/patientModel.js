@@ -116,6 +116,18 @@ const patientSchema = new Schema({
   clientName:{
     type:String,
     required:false
+  },
+  idCard: {
+    type: String,
+    required: false
+  },
+  primaryInsuranceCard: {
+    type: String,
+    required: false
+  },
+  secondaryInsuranceCard: {
+    type: String,
+    required: false
   }
 
 });

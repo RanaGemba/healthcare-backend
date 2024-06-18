@@ -1,17 +1,16 @@
+const express = require('express');
+const path = require('path');
+const app = express();
 const cors = require('cors');
 const { connect } = require('./db.js');
-const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
-const path = require('path');
 
 dotenv.config();
 
-const app = express();
 const port = process.env.PORT || 3000;
-
 
 const clinicRoute = require('./routes/clinicRoute.js');
 const doctorRoute = require('./routes/doctorRoute.js');
@@ -21,11 +20,8 @@ const insuranceRoute = require('./routes/insuranceRoute.js');
 const adminUserRoute = require('./routes/adminUserRoute.js');
 const uploadRouter = require('./routes/upload.js'); 
 
-
-
 app.use(cors());
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: '16kb' }));
 app.use(express.urlencoded({ extended: true, limit: '16kb' }));
@@ -38,6 +34,8 @@ connect(process.env.MONGODB_URI);
 // Serve static files from the 'dist' folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// Serve images from the uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // API routes
 app.use('/v1/api/clinic', clinicRoute);
 app.use('/v1/api/doctor', doctorRoute);
@@ -47,17 +45,14 @@ app.use('/v1/api/insurance', insuranceRoute);
 app.use('/v1/api/adminUser', adminUserRoute);
 app.use('/v1/api/upload', uploadRouter);
 
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
-
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
